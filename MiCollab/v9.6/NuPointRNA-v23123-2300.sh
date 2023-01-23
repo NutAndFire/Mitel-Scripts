@@ -32,7 +32,7 @@ author()
 {
 printf "
 ##########################################################################
-#Script Name : VMPortRedundancy                                          #
+#Script Name : NuPointRNA-v23123-2300                                          #
 #Description : Check VM ports are correctly going to desired controller, #
 #              rebuild redundancy file and view active VM ports          #
 #Author      : Chris Bleakley                                            #
@@ -84,11 +84,11 @@ livePortViewer() {
 }
 
 help() {
-    echo "VMPortRedundancy Usage:"
-    echo "    ./VMPortRedundancy -h               Display this help message."
-    echo "    ./VMPortRedundancy -v               View current Redundancy ports."
-    echo "    ./VMPortRedundancy -R               Delete current Redundancy file and rebuild."
-    echo "    ./VMPortRedundancy -s               Show Live calls accessing VM Ports."
+    echo "NuPointRNA-v23123-2300 Usage:"
+    echo "    ./NuPointRNA-v23123-2300 -h               Display this help message."
+    echo "    ./NuPointRNA-v23123-2300 -v               View current Redundancy ports."
+    echo "    ./NuPointRNA-v23123-2300 -R               Delete current Redundancy file and rebuild."
+    echo "    ./NuPointRNA-v23123-2300 -s               Show Live calls accessing VM Ports."
 }
 
 main() {
