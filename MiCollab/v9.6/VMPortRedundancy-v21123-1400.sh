@@ -1,5 +1,17 @@
 #!/usr/bin/env bash
 
+## KMS SO3732
+## 
+## Title
+## NuPoint ports not answering (Ring No Answer) (RNA)
+##
+## Symptoms
+## NuPoint ports not answering.
+## When huntgroup or individual port called vccs and event recorder showed no activity. 
+## All configuration on NuPoint was correct and on initial investigation all configuration on 
+## MiVB correct set type was enabled for NuPoint license and Class of Service correctly set. 
+
+
 printf "\033c"
 
 banner()
@@ -25,7 +37,7 @@ printf "
 #              rebuild redundancy file and view active VM ports          #
 #Author      : Chris Bleakley                                            #
 #Email       : chris.bleakley@atlas-comms.com                            #
-#Version     : 21123-1400                                                #
+#Version     : 23123-2300                                                #
 ##########################################################################
 \n
 "
@@ -36,6 +48,12 @@ author
 
 viewPort() {
     ps -ef | grep MitaiMonitor
+}
+
+activatecfgCmd() {
+	printf "Start the build of the resilient.ini file\n"
+	activetecfg -C
+	printf "[*] Done!\n"
 }
 
 rebuldRedundancyFile() {
@@ -49,10 +67,15 @@ rebuldRedundancyFile() {
         printf "[*] Done!\n"
         viewPort
     else
-        printf "$FILE does not exist.\n"
-        printf "Start the build of the resilient.ini file\n"
-        activetecfg -C
-        printf "[*] Done!\n"
+		printf "$FILE does not exist.\n"
+	    while true; do
+		    read -p "Do you still wan to run activatecfg? (y/n)" yn
+			case $yn in
+				[Yy]* ) activatecfgCmd; break;;
+				[Nn]* ) exit;;
+				* ) echo "Please answer yes or no.";;
+			esac
+		done
     fi
 }
 
